@@ -185,6 +185,7 @@ import CryptoJS from "crypto-js";
 import { listPwd, getPwd, delPwd, addPwd, updatePwd } from "@/api/ai/pwd";
 
 export default {
+  name: "SHA",
   components: {},
   props: [],
   data() {

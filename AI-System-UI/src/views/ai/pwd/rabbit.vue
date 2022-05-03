@@ -155,7 +155,7 @@ import CryptoJS from "crypto-js";
 import { listPwd, getPwd, delPwd, addPwd, updatePwd } from "@/api/ai/pwd";
 
 export default {
-  name: "AES",
+  name: "RABBIT",
   components: {},
   props: [],
   data() {

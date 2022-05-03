@@ -158,7 +158,7 @@
         <el-button @click="cancel">取 消</el-button>
       </div>
     </el-dialog>
-    
+
   </div>
 </template>
 
@@ -166,7 +166,7 @@
 import { listPwd, getPwd, delPwd, addPwd, updatePwd } from "@/api/ai/pwd";
 
 export default {
-  name: "Pwd",
+  name: "AIPWD",
   data() {
     return {
       // 按钮loading
