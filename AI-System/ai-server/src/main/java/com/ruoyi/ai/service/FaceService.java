@@ -96,8 +96,8 @@ public class FaceService{
      * @param src
      */
     public static String saveMarkedImage(Mat src) {
-        // 新的图片文件名称
-        String newFileName = Paths.get("build","faceResults").toAbsolutePath().toString() + "/" + UUID.randomUUID() + ".png";
+        // 新的图片文件名称 UUID.randomUUID()
+        String newFileName = Paths.get("build","faceResults").toAbsolutePath().toString() + "\\"  + "face_result.png";
         // 图片写到磁盘上
         imwrite(newFileName, src);
 

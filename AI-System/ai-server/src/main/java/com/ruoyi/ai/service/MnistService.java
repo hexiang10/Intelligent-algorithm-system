@@ -50,7 +50,7 @@ public class MnistService {
 
     public static int inference(String name) throws IOException {
         fileName = name;
-        try (Stream<Path> paths = Files.list(Paths.get("build",  "uploadMnist"))) {
+        try (Stream<Path> paths = Files.list(Paths.get("build",  "upload"))) {
             //paths.filter(p -> p.toString().endsWith(".png"))
             paths.filter(p -> p.toString().endsWith(fileName))
 

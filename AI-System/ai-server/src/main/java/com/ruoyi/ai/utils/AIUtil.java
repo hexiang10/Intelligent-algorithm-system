@@ -1,9 +1,12 @@
 package com.ruoyi.ai.utils;
 
 import com.ruoyi.ai.common.FastDFSFile;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Paths;
@@ -15,6 +18,7 @@ import java.util.UUID;
  * @description:
  */
 
+@Slf4j
 public class AIUtil {
 
     private static String fileName;
@@ -22,6 +26,23 @@ public class AIUtil {
         return fileName;
     }
 
+    //path 为图片在服务器的绝对路径
+    public static String getPhotoBase64(String path) {
+        try {
+            File file = new File(path);
+            FileInputStream fis;
+            fis = new FileInputStream(file);
+            long size = file.length();
+            log.info("文件大小=>" + size);
+            byte[] temp = new byte[(int) size];
+            fis.read(temp, 0, (int) size);
+            fis.close();
+            return new String(Base64.encodeBase64(temp));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     /**
      * 上传文件到指定目录
      * @param file 文件
@@ -29,7 +50,7 @@ public class AIUtil {
      */
     public static String upload(MultipartFile file ,String uploadName){
 
-        fileName = UUID.randomUUID()+".png";
+        fileName = "upload.png";
 
         //使用原文件名
         String path = Paths.get("build",uploadName).toAbsolutePath().toString() + "\\"+ fileName;
@@ -94,5 +115,7 @@ public class AIUtil {
         }
         return null;
     }
+
+
 
 }

@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 export function upload(data) {
   return request({
-    url: '/face/yolo/fileUpload',
+    url: '/image/fileUpload',
     method: 'post',
     data: data,
     headers: {
@@ -15,7 +15,7 @@ export function upload(data) {
 
 export function getImg(name) {
   return request({
-    url: '/face/yolo/show/',
+    url: '/face/show/',
     method: 'post',
     data:{
       fileName: name
