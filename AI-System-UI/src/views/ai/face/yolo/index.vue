@@ -67,8 +67,10 @@ export default {
         background: 'rgba(0, 0, 0, 0.7)'
       });
       upload(formData).then(res=>{
-        if(res.msg==='error')
+        if(res.msg=='error'){
           this.$message.error(res.data);
+          loading.close();
+        }
         else {
           this.$message.success(res.msg);
           console.log(res.data);
@@ -79,10 +81,16 @@ export default {
             this.imgUrl = src
             this.isRecognize=true;
             loading.close();
+          }).catch(res=>{
+            loading.close();
           })
+
 
         }
       })
+      setTimeout(()=>{
+        loading.close();
+      },3000)
     },
 
     handleRemove(file, fileList) {

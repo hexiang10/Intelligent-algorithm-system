@@ -1,7 +1,7 @@
 {
   "name": "ruoyi-vue-plus",
   "version": "3.5.0",
-  "description": "RuoYi-Vue-Plus后台管理系统",
+  "description": "智能算法系统",
   "author": "LionLi",
   "license": "MIT",
   "scripts": {
@@ -57,6 +57,7 @@
     "vue": "2.6.12",
     "vue-count-to": "1.0.13",
     "vue-cropper": "0.5.5",
+    "vue-esign": "^1.1.0",
     "vue-markdown": "^2.2.4",
     "vue-meta": "2.4.0",
     "vue-router": "3.4.9",

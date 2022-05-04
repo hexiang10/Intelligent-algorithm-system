@@ -164,6 +164,7 @@ export default {
         keyWord: "",
         ciphertext: "",
         remark: undefined,
+        encodeType: 'RC4',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,

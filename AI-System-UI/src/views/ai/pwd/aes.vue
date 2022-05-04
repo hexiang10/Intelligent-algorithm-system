@@ -150,7 +150,7 @@
 </template>
 <script>
 import CryptoJS from "crypto-js";
-import { listPwd, getPwd, delPwd, addPwd, updatePwd } from "@/api/ai/pwd";
+import {addPwd} from "@/api/ai/pwd";
 
 export default {
   name: "AES",
@@ -164,6 +164,7 @@ export default {
         keyWord: "",
         ciphertext: "",
         remark: undefined,
+        encodeType: 'AES',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,
@@ -228,7 +229,7 @@ export default {
       }catch{
         this.$message.error("解密失败");
       }
-      
+
     },
     handleAdd() {
       this.open = true;

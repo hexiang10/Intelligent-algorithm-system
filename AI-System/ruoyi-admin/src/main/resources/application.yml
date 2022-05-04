@@ -292,15 +292,3 @@ management:
     logfile:
       external-file: ./logs/sys-console.log
 
-
---- # 自定义文件上传路径
-web:
-  upload-path: D:/Study/Java EE/AISystem/AI-System/ai-server/src/upload
-  result-path: D:/Study/Java EE/AISystem/AI-System/ai-server/src/yolo
---- # 模型路径
-opencv:
-  yolo-cfg-path: D:/Study/Java EE/AI-System-Resource/models/yolov4.cfg
-  yolo-weights-path: D:/Study/Java EE/AI-System-Resource/models/yolov4.weights
-  yolo-coconames-path: D:/Study/Java EE/AI-System-Resource/models/coco.names
-  yolo-width: 608
-  yolo-height: 608

@@ -170,6 +170,7 @@ export default {
         keyWord: "",
         ciphertext: "",
         remark: undefined,
+        encodeType: 'TripleDES',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,

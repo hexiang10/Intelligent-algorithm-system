@@ -204,6 +204,7 @@ export default {
         keyWord: '',
         ciphertext: undefined,
         remark: undefined,
+        encodeType: 'HMAC',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,
@@ -236,36 +237,42 @@ export default {
             this.formData.text,
             this.formData.keyWord
           ).toString();
+          this.formData.encodeType='HmacMD5';
           break;
         case 2:
           this.formData.ciphertext = CryptoJS.HmacSHA224(
             this.formData.text,
             this.formData.keyWord
           ).toString();
+          this.formData.encodeType='HmacSHA224';
           break;
         case 3:
           this.formData.ciphertext = CryptoJS.HmacSHA256(
             this.formData.text,
             this.formData.keyWord
           ).toString();
+          this.formData.encodeType='HmacSHA256';
           break;
         case 4:
           this.formData.ciphertext = CryptoJS.HmacSHA1(
             this.formData.text,
             this.formData.keyWord
           ).toString();
+          this.formData.encodeType='HmacSHA1';
           break;
         case 5:
           this.formData.ciphertext = CryptoJS.HmacSHA384(
             this.formData.text,
             this.formData.keyWord
           ).toString();
+          this.formData.encodeType='HmacSHA384';
           break;
         case 6:
           this.formData.ciphertext = CryptoJS.HmacSHA512(
             this.formData.text,
             this.formData.keyWord
           ).toString();
+          this.formData.encodeType='HmacSHA512';
           break;
       }
       if (this.formData.ciphertext == "") {

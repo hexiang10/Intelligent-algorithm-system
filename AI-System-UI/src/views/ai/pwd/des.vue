@@ -162,6 +162,7 @@ export default {
         keyWord: "",
         ciphertext: "",
         remark: undefined,
+        encodeType: 'DES',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,
@@ -226,7 +227,7 @@ export default {
       }catch{
         this.$modal.msgError("解密失败");
       }
-     
+
     },
     handleAdd() {
       this.open = true;

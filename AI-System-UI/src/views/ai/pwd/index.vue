@@ -28,6 +28,15 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="加密方式" prop="encodeType">
+        <el-input
+          v-model="queryParams.encodeType"
+          placeholder="请输入加密方式"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="备注" prop="remark">
         <el-input
           v-model="queryParams.remark"
@@ -103,6 +112,7 @@
       <el-table-column label="原文" align="center" prop="text" />
       <el-table-column label="key键" align="center" prop="keyWord" />
       <el-table-column label="密文" align="center" prop="ciphertext" />
+      <el-table-column label="加密方式" align="center" prop="encodeType" />
       <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
@@ -148,6 +158,9 @@
         </el-form-item>
         <el-form-item label="密文" prop="ciphertext">
           <el-input v-model="form.ciphertext" type="textarea" placeholder="请输入内容" />
+        </el-form-item>
+        <el-form-item label="加密方式" prop="encodeType">
+          <el-input v-model="form.encodeType" placeholder="请输入加密方式" />
         </el-form-item>
         <el-form-item label="备注" prop="remark">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
@@ -195,6 +208,7 @@ export default {
         pageSize: 10,
         text: undefined,
         keyWord: undefined,
+        encodeType: undefined,
         ciphertext: undefined,
         remark: undefined,
         createTime: undefined,
@@ -240,6 +254,7 @@ export default {
         text: undefined,
         keyWord: undefined,
         ciphertext: undefined,
+        encodeType: undefined,
         remark: undefined,
         delFlag: undefined,
         createTime: undefined,

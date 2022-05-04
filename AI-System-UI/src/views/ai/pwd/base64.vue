@@ -166,6 +166,7 @@ export default {
         keyWord: "",
         ciphertext: "",
         remark: undefined,
+        encodeType: 'Base64',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,

@@ -196,6 +196,7 @@ export default {
         keyWord: undefined,
         ciphertext: undefined,
         remark: undefined,
+        encodeType: 'SHA',
         delFlag: undefined,
         createTime: undefined,
         createBy: undefined,
@@ -227,31 +228,37 @@ export default {
           this.formData.ciphertext = CryptoJS.MD5(
             this.formData.text
           ).toString();
+          this.formData.encodeType='MD5';
           break;
         case 2:
           this.formData.ciphertext = CryptoJS.SHA224(
             this.formData.text
           ).toString();
+          this.formData.encodeType='SHA224';
           break;
         case 3:
           this.formData.ciphertext = CryptoJS.SHA256(
             this.formData.text
           ).toString();
+          this.formData.encodeType='SHA256';
           break;
         case 4:
           this.formData.ciphertext = CryptoJS.SHA1(
             this.formData.text
           ).toString();
+          this.formData.encodeType='SHA1';
           break;
         case 5:
           this.formData.ciphertext = CryptoJS.SHA384(
             this.formData.text
           ).toString();
+          this.formData.encodeType='SHA384';
           break;
         case 6:
           this.formData.ciphertext = CryptoJS.SHA512(
             this.formData.text
           ).toString();
+          this.formData.encodeType='SHA512';
           break;
       }
     },

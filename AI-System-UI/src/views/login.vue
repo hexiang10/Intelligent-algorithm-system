@@ -72,7 +72,7 @@ export default {
     return {
       codeUrl: "",
       loginForm: {
-        username: "admin",
+        username: "xiang",
         password: "admin123",
         rememberMe: false,
         code: "",
