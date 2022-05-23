@@ -43,5 +43,5 @@ nbdist/
 !*/build/*.xml
 
 
-
+/docs/
 /logs/
