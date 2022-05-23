@@ -42,4 +42,6 @@ nbdist/
 !*/build/*.html
 !*/build/*.xml
 
-/ai-ui/
+
+
+/logs/

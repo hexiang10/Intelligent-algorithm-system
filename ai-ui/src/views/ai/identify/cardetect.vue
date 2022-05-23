@@ -1,0 +1,159 @@
+<template>
+  <div class="body" >
+    <h1>车牌识别</h1>
+    <el-button type="success"  @click="recognize" >开始识别</el-button>
+    <br/>
+    <img :src="imgUrl" style="margin-top: 10px" @click="layerView">
+    <br/>
+    <br/>
+    <el-upload
+      class="upload-demo"
+      action=""
+      ref="upload"
+      accept=".jpg, .png, .jpeg"
+      :http-request="uploadHttpRequest"
+      :before-upload="beforeUpload"
+      :auto-upload="false"
+      :on-remove="handleRemove"
+      :on-change="fileChange"
+      :file-list="fileList"
+      :multiple="false"
+      :limit="photoNum"
+      list-type="picture"
+    >
+      <el-button  type="primary">上传图片</el-button>
+      <div slot="tip" class="el-upload__tip">
+        只能上传jpg/png/jpeg文件，且不超过10MB
+      </div>
+    </el-upload>
+    <br/>
+    <img v-if="isRecognize" :src="card" style="margin-top: 10px" @click="layerView">
+    <h3 v-if="isRecognize">{{ resultInfo}}</h3>
+  </div>
+</template>
+
+<script>
+import { getCarImg, upload } from '@/api/ai/utils/AIUtil'
+
+export default {
+  Name: "CAR_DETECT",
+  data() {
+    return {
+      imgUrl:  require("@/assets/images/car.jpeg") ,
+      isRecognize: false,
+      fileList: [],
+      resultInfo:'',
+      filePath: '',
+      photoNum: 1,
+      isUpload: false,
+      card: ''
+    };
+  },
+  methods: {
+    beforeUpload(file){
+        const isJPG = file.type === 'image/jpeg';
+        const isPNG = file.type === 'image/png';
+        const isJPEG = file.type === 'image/jpeg';
+        const isLt10M = file.size / 1024 / 1024 < 10;
+        if (!isJPG&&!isPNG&&!isJPEG) {
+          this.$message.error('上传的图片只能是 JPG|PNG|JPEG 格式');
+        }
+        if (!isLt10M) {
+          this.$message.error('上传的图片大小不能超过 10MB!');
+        }
+    },
+
+    uploadHttpRequest(file,fileList) {
+      let formData = new FormData();
+      formData.append('file', file.file);
+      upload(formData).then(res=>{
+        if(res.msg==='error'){
+          this.$message.error(res.data);
+        }
+        else {
+          this.$message.success(res.msg);
+          let src = res.data.photo;
+          src = src == null ? '' : 'data:image/png;base64,' + src
+          this.imgUrl = src
+          this.filePath = res.data.uploadPath;
+        }})
+    },
+
+    handleRemove(file, fileList) {
+      this.$message.success("已删除上传文件")
+    },
+   layerView() {
+      if(!this.isRecognize) {
+        this.$message.error("图片未开始识别，无法查看结果！");
+        return;
+      }
+      const h = this.$createElement;
+      this.$notify({
+        title: '识别结果',
+        message: h('i', { style: 'color: teal'}, this.resultInfo)
+      });
+    },
+    // 文件发生改变
+    fileChange(file,fileList) {
+        // if (fileList.length > 0) {
+        //   this.fileList = [fileList[fileList.length - 1]] // 展示最后一次选择的文件
+        // }
+        this.submitUpload();
+        this.fileList = [];
+        this.isRecognize=false;
+        this.isUpload=true;
+  },
+  // 点击上传：手动上传到服务器，此时会触发组件的http-request
+    submitUpload() {
+        this.$refs.upload.submit()
+    },
+
+    recognize(){
+      if(!this.isUpload){
+        this.$message.error("未上传图片！");
+        return;
+      }
+      const loading = this.$loading({
+        lock: true,
+        text: '正在识别中......',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      getCarImg(this.filePath).then(res=>{
+        if(res.msg==='error'){
+          this.$message.error(res.data);
+        }else {
+          this.$message.success(res.msg);
+          console.log(res)
+          this.resultInfo = '车牌号为：'+res.data.carNum;
+          let src = res.data.photo
+          src = src == null ? '' : 'data:image/png;base64,' + src
+          this.card = src
+          this.isRecognize=true;
+          loading.close();
+        }
+      }).catch(res=>{
+        loading.close();
+      })
+      setTimeout(()=>{
+        loading.close();
+      },3000)
+    }
+}
+};
+</script>
+
+<style scoped>
+.body {
+  font-family: Arial;
+  text-align: center;
+}
+canvas {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+}
+</style>

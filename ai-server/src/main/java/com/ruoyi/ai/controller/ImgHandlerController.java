@@ -27,7 +27,7 @@ public class ImgHandlerController {
      *
      */
     @RequestMapping("/gaussian")
-    public AjaxResult showPhotos(@RequestBody Map<String, Object> map) {
+    public AjaxResult showGaussian(@RequestBody Map<String, Object> map) {
         String fileName = (String) map.get("fileName");
         ImgHandlerUtil.getGaussian(map,fileName);
         if(map.containsKey("error")){
@@ -46,6 +46,51 @@ public class ImgHandlerController {
     public AjaxResult showContours(@RequestBody Map<String, Object> map) {
         String fileName = (String) map.get("fileName");
         ImgHandlerUtil.findContours(map,fileName);
+        if(map.containsKey("error")){
+            return AjaxResult.error("error",map.get("error"));
+        }
+        return AjaxResult.success("处理成功！", map);
+
+    }
+
+    /**
+     * 磨皮美颜
+     *
+     */
+    @RequestMapping("/epf")
+    public AjaxResult showEpf(@RequestBody Map<String, Object> map) {
+        String fileName = (String) map.get("fileName");
+        ImgHandlerUtil.getEPF(map,fileName);
+        if(map.containsKey("error")){
+            return AjaxResult.error("error",map.get("error"));
+        }
+        return AjaxResult.success("处理成功！", map);
+
+    }
+
+    /**
+     * 磨皮美颜
+     *
+     */
+    @RequestMapping("/canny")
+    public AjaxResult showCanny(@RequestBody Map<String, Object> map) {
+        String fileName = (String) map.get("fileName");
+        ImgHandlerUtil.getCanny(map,fileName);
+        if(map.containsKey("error")){
+            return AjaxResult.error("error",map.get("error"));
+        }
+        return AjaxResult.success("处理成功！", map);
+
+    }
+
+    /**
+     * 边缘分割
+     *
+     */
+    @RequestMapping("/watershed")
+    public AjaxResult showWaterShed(@RequestBody Map<String, Object> map) {
+        String fileName = (String) map.get("fileName");
+        ImgHandlerUtil.getWaterShed(map,fileName);
         if(map.containsKey("error")){
             return AjaxResult.error("error",map.get("error"));
         }

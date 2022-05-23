@@ -38,22 +38,23 @@ public class AiPwdServiceImpl extends ServicePlusImpl<AiPwdMapper, AiPwd, AiPwdV
     @Override
     public TableDataInfo<AiPwdVo> queryPageList(AiPwdBo bo, PageQuery pageQuery) {
         LambdaQueryWrapper<AiPwd> lqw = buildQueryWrapper(bo);
-        QueryWrapper<AiPwd> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id",SecurityUtils.getUserId());
-        Page<AiPwdVo> result = pageVo(pageQuery.build(), queryWrapper);
+        //QueryWrapper<AiPwd> queryWrapper = new QueryWrapper<>();
+        //queryWrapper.eq("user_id",SecurityUtils.getUserId());
+        lqw.eq(AiPwd::getUserId,SecurityUtils.getUserId());
+        Page<AiPwdVo> result = pageVo(pageQuery.build(), lqw);
         return TableDataInfo.build(result);
     }
 
     @Override
     public List<AiPwdVo> queryList(AiPwdBo bo) {
         LambdaQueryWrapper<AiPwd> lqw = buildQueryWrapper(bo);
-        QueryWrapper<AiPwd> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_id",SecurityUtils.getUserId());
-        return listVo(queryWrapper);
+        lqw.eq(AiPwd::getUserId,SecurityUtils.getUserId());
+        //QueryWrapper<AiPwd> queryWrapper = new QueryWrapper<>();
+        //queryWrapper.eq("user_id",SecurityUtils.getUserId());
+        return listVo(lqw);
     }
 
     private LambdaQueryWrapper<AiPwd> buildQueryWrapper(AiPwdBo bo) {
-        Map<String, Object> params = bo.getParams();
         LambdaQueryWrapper<AiPwd> lqw = Wrappers.lambdaQuery();
         lqw.like(StringUtils.isNotBlank(bo.getText()), AiPwd::getText, bo.getText());
         lqw.like(StringUtils.isNotBlank(bo.getKeyWord()), AiPwd::getKeyWord, bo.getKeyWord());

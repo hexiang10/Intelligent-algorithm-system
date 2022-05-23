@@ -29,7 +29,7 @@ import static org.opencv.imgproc.Imgproc.FONT_HERSHEY_SIMPLEX;
 /**
  * @author: hexiang
  * @date: 2022/5/3
- * @description:
+ * @description: 对象识别核心代码
  */
 
 @Slf4j
@@ -60,7 +60,7 @@ public class FaceUtil {
         //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         // 初始化打印一下，确保编码正常，否则日志输出会是乱码
         //log.error("file.encoding is " + System.getProperty("file.encoding"));
-        log.error("算法模型加载中...如上错误无需理会");
+        log.error("算法模型加载中...以上错误无需理会");
 
         // 神经网络初始化
         net = readNetFromDarknet(Paths.get("build","faceModel","yolov4.cfg").toAbsolutePath().toString(), Paths.get("build","faceModel","yolov4.weights").toAbsolutePath().toString());
@@ -95,7 +95,7 @@ public class FaceUtil {
     }
 
     /**
-     * 将添加了标注的图片保持在磁盘上，并将图片信息写入map（给跳转页面使用）
+     * 将添加了标注的图片保持在磁盘上，并将图片信息写入map（给前端使用）
      * @param src
      */
     public static String saveMarkedImage(Mat src) {

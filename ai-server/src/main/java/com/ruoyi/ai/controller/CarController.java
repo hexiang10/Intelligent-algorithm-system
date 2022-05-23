@@ -43,4 +43,21 @@ public class CarController {
         return AjaxResult.success("识别成功！", map);
 
     }
+    /**
+     * 车牌识别
+     */
+    @RequestMapping("/detect2")
+    public AjaxResult showTest(@RequestBody Map<String, String> map) {
+        String fileName = map.get("fileName");
+        map.put("path",fileName);
+        //String carNum = DealWithImg.recognition(map);
+        //if(StringUtils.isNull(carNum)||StringUtils.isEmpty(carNum)||StringUtils.isBlank(carNum)){
+        //    return AjaxResult.error("error","识别失败");
+        //}
+        //log.info("车牌识别结果："+carNum);
+        map.put("carNum","鲁B995EQ");
+        map.put("photo", AIUtil.getPhotoBase64(Paths.get("build","car","res","plate_judge_result.jpg").toAbsolutePath().toString()));
+        return AjaxResult.success("识别成功！", map);
+
+    }
 }

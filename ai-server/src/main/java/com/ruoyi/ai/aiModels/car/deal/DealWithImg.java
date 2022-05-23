@@ -19,11 +19,12 @@ public class DealWithImg  {
      public static CharsRecognise cr=null;
 
       static {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         init();
       }
 
       public static void init() {
-          System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+          //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
           plateDetect=new PlateDetect();
           plateDetect.setPDLifemode(true);
           cr=new CharsRecognise();
