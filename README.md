@@ -28,9 +28,7 @@
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/665196c04d0247e1a78ca81ddeb94868.png)
 
-文档地址1：https://he-xiang-best.github.io/AI-System/
-
-文档地址2：[智能算法系统 · 语雀 (yuque.com)](https://www.yuque.com/he-xiang-best/ai-system)
+文档地址: https://he-xiang-best.github.io/AI-System/
 
 项目资源：https://download.csdn.net/download/HXBest/85442781
 
