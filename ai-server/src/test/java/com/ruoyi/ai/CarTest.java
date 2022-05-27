@@ -14,7 +14,7 @@ import java.util.Map;
 public class CarTest {
     public static void main(String[] args) {
         Map<String, String> map = new HashMap<String, String>();
-        map.put("path","D:\\Study\\Project\\AI-System\\build\\car\\image\\baidu_image\\test15.jpg");
+        map.put("path","D:\\Study\\Project\\AI-System\\build\\car\\image\\baidu_image\\test1.jpg");
         String carNum = DealWithImg.recognition(map);
     }
 }

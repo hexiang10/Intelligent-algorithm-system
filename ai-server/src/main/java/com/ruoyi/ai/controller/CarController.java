@@ -29,7 +29,7 @@ public class CarController {
     /**
      * 车牌识别
      */
-    @RequestMapping("/detect")
+    @RequestMapping("/detect2")
     public AjaxResult showPhotos(@RequestBody Map<String, String> map) {
         String fileName = map.get("fileName");
         map.put("path",fileName);
@@ -46,7 +46,7 @@ public class CarController {
     /**
      * 车牌识别
      */
-    @RequestMapping("/detect2")
+    @RequestMapping("/detect")
     public AjaxResult showTest(@RequestBody Map<String, String> map) {
         String fileName = map.get("fileName");
         map.put("path",fileName);
