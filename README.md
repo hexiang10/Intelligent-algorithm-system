@@ -30,11 +30,11 @@
 
 文档地址: https://he-xiang-best.github.io/AI-System/
 
-项目资源：https://download.csdn.net/download/HXBest/85442781
+项目资源：[https://download.csdn.net/download/HXBest/85442781](https://download.csdn.net/download/HXBest/85442781?_blank)
 
 # 项目演示
 
-> 项目介绍视频观看地址：
+> 项目介绍视频观看地址：[https://www.bilibili.com/video/BV17341137uL](https://www.bilibili.com/video/BV17341137uL?_blank)
 
 
 
